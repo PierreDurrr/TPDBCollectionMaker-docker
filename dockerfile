@@ -59,7 +59,8 @@ RUN pip3 install watchdog
 ENTRYPOINT ["python3", "/app/script.py"]
 
 # Start pipenv
-RUN pipenv run python /app/TPDBCollectionMaker/main.py
+# RUN pipenv run python /app/TPDBCollectionMaker/main.py
+CMD ["/bin/sh" "pipenv run python /app/TPDBCollectionMaker/main.py"]
 
 # Define the volume
 #VOLUME /config
