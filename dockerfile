@@ -66,7 +66,7 @@ ENTRYPOINT ["python3", "/app/script.py"]
 
 # Start pipenv
 # RUN pipenv run python /app/TPDBCollectionMaker/main.py
-RUN /bin/bash /app/set-pipenv.sh
+RUN /app/set-pipenv.sh
 
 # Define the volume
 #VOLUME /config
