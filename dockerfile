@@ -53,7 +53,7 @@ RUN git clone https://github.com/PierreDurrr/TPDbCollectionMaker.git /app/TPDBCo
 COPY script.py /app/script.py
 
 # Copier le script set-pipen.sh et les autres fichiers nécessaires dans le conteneur
-COPY set-pipenv.sh /app/set-pipenv.sh
+COPY set-pipenv.py /app/set-pipenv.py
 
 # Set executable permissions for scripts
 RUN chmod +x /app/set-pipenv.sh
@@ -66,7 +66,7 @@ ENTRYPOINT ["python3", "/app/script.py"]
 
 # Start pipenv
 # RUN pipenv run python /app/TPDBCollectionMaker/main.py
-RUN /app/set-pipenv.sh
+RUN python3 /app/set-pipenv.py
 
 # Define the volume
 #VOLUME /config
