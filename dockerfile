@@ -30,6 +30,12 @@ RUN apk add --no-cache --upgrade --virtual=build-dependencies \
     uwsgi-python \
     sshpass
 
+# Python3.10
+ENV PYTHONUNBUFFERED=1
+RUN apk add --update --no-cache python3 && ln -sf python3 /usr/bin/python
+RUN python3 -m ensurepip
+RUN pip3 install --no-cache --upgrade pip setuptools
+
 # Install pip packages
 RUN python3 -m ensurepip && \
     rm -rf /usr/lib/python*/ensurepip && \
