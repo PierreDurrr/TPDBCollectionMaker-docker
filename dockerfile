@@ -52,6 +52,9 @@ RUN git clone https://github.com/PierreDurrr/TPDbCollectionMaker.git /app/TPDBCo
 # Copier le script Python et les autres fichiers nécessaires dans le conteneur
 COPY script.py /app/script.py
 
+# Copier le script set-pipen.sh et les autres fichiers nécessaires dans le conteneur
+COPY set-pipenv.sh /app/set-pipenv.sh
+
 # Installer le module watchdog
 RUN pip3 install watchdog
 
