@@ -28,7 +28,8 @@ RUN apk add --no-cache --upgrade --virtual=build-dependencies \
     python3 \
     uwsgi \
     uwsgi-python \
-    sshpass
+    sshpass \
+    nano
 
 # Python3.10
 ENV PYTHONUNBUFFERED=1
