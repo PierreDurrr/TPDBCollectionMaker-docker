@@ -57,7 +57,7 @@ RUN pip3 install watchdog
 
 # Définir le point d'entrée du conteneur
 #ENTRYPOINT ["python3", "/app/script.py"]
-ENTRYPOINT "/bin/bash", "pipenv run python /app/TPDBCollectionMaker/main.py" && "python3", "/app/script.py"
+ENTRYPOINT "/bin/sh", "pipenv run python /app/TPDBCollectionMaker/main.py" && "python3", "/app/script.py"
 
 # Start pipenv
 # RUN pipenv run python /app/TPDBCollectionMaker/main.py
