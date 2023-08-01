@@ -56,7 +56,7 @@ COPY script.py /app/script.py
 COPY set-pipenv.py /app/set-pipenv.py
 
 # Set executable permissions for scripts
-RUN chmod +x /app/set-pipenv.sh
+#RUN chmod +x /app/set-pipenv.sh
 
 # Installer le module watchdog
 RUN pip3 install watchdog
