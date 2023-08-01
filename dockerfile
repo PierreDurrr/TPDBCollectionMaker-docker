@@ -33,7 +33,7 @@ RUN apk add --no-cache --upgrade --virtual=build-dependencies \
 # Install pip packages
 RUN python3 -m ensurepip && \
     rm -rf /usr/lib/python*/ensurepip && \
-    pip3 install --no-cache-dir -U pip wheel pipenv
+    pip3 install --no-cache-dir -U pip wheel pipenv \
     pipenv install
 
 # Créer le répertoire de travail
