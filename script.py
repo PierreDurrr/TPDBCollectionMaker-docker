@@ -11,7 +11,7 @@ from watchdog.events import FileSystemEventHandler
 folder_path = '/app/data'
 
 # La commande à exécuter pour chaque nouveau fichier en Pipenv
-command_to_execute = "python /app/TPDBCollectionMaker/main.py /app/data/in.html --always-quote >> /app/data/mymetadatafile.yml"
+command_to_execute = "python /app/TPDBCollectionMaker/main.py /app/data/in.html --always-quote"
 
 class NewFileHandler(FileSystemEventHandler):
     def on_created(self, event):
