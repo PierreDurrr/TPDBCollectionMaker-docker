@@ -36,8 +36,8 @@ COPY --from=python-reqs /usr/local/lib/python3.11/site-packages /usr/local/lib/p
 # Override default ImageMagick policy XML file
 RUN set -eux; \
     rm -f Pipfile Pipfile.lock; \
-    groupadd -g 99 titlecardmaker; \
-    useradd -u 100 -g 99 titlecardmaker; \
+    groupadd -g 99 tpdbcollectionmaker; \
+    useradd -u 100 -g 99 tpdbcollectionmaker; \
     apt-get update; \
     apt-get install -y --no-install-recommends nano; \
 
