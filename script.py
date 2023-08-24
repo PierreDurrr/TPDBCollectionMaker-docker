@@ -3,14 +3,14 @@
 import os
 import sys
 import time
+import subprocess
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 
 # Chemin du dossier à surveiller
 folder_path = '/app/data'
 
-# La commande à exécuter pour chaque nouveau fichier
-#command_to_execute = "echo New file detected: {}"
+# La commande à exécuter pour chaque nouveau fichier en Pipenv
 command_to_execute = "python /app/TPDBCollectionMaker/main.py /app/data/in.html --always-quote >> /app/data/mymetadatafile.yml"
 
 class NewFileHandler(FileSystemEventHandler):
@@ -19,8 +19,12 @@ class NewFileHandler(FileSystemEventHandler):
             return
 
         file_path = event.src_path
-        print(command_to_execute.format(file_path))
-        # Insérer ici votre code pour exécuter la commande sur le fichier
+        print(f"New file detected: {file_path}")
+        # Exécuter la commande en Pipenv en utilisant subprocess
+        try:
+            subprocess.run(command_to_execute.format(file_path), shell=True, check=True)
+        except subprocess.CalledProcessError as e:
+            print(f"Une erreur s'est produite lors de l'exécution de la commande : {e}")
 
 if __name__ == '__main__':
     print("Monitoring folder for new files...")
@@ -31,7 +35,7 @@ if __name__ == '__main__':
         # Créer l'objet watchdog pour surveiller les événements du dossier
         event_handler = NewFileHandler()
         observer = Observer()
-        observer.schedule(event_handler, folder_path, recursive=False)
+        observer.schedule(event_handler, folder_path, recursive=True)
         observer.start()
 
         # Garder le script en cours d'exécution pour continuer à surveiller
