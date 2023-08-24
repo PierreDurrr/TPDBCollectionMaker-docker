@@ -53,7 +53,7 @@ COPY main.py /app/main.py
 # Installer le module watchdog
 RUN pip3 install watchdog
 
-FROM python:3.7-slim AS python-deps
+FROM python:3.11-slim AS python-deps
 
 # Install pipenv and compilation dependencies
 RUN pip install pipenv
@@ -65,7 +65,7 @@ COPY Pipfile.lock .
 RUN PIPENV_VENV_IN_PROJECT=1 pipenv install --deploy
 
 
-FROM python:3.7-slim AS runtime
+FROM python:3.11-slim AS runtime
 
 # Copy virtual env from python-deps stage
 COPY --from=python-deps /.venv /.venv
