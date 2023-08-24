@@ -47,13 +47,13 @@ RUN set -eux; \
 
 
 # Set working directory, copy source into container
-WORKDIR /app
+WORKDIR /
 
 # Installer le module watchdog
 RUN pip3 install watchdog
 
 # Définir le point d'entrée du conteneur
-ENTRYPOINT ["python3", "/watchdog/script.py"]
+ENTRYPOINT ["python3", "./script.py"]
   
 # Entrypoint
 #CMD ["python3", "main.py", "--run", "--no-color"]
