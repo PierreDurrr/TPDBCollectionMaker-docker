@@ -54,7 +54,13 @@ RUN pip3 install watchdog
 
 # Définir le point d'entrée du conteneur
 ENTRYPOINT ["python3", "/app/watchdog-service.py"]
-  
+
+# Copy crontab file
+COPY crontab /etc/crontabs/root
+
+# Start cron daemon
+CMD ["crond", "-f", "-l", "2"]
+
 # Entrypoint
 #CMD ["python3", "main.py", "--run", "--no-color"]
 #ENTRYPOINT ["bash", "./start.sh"]
