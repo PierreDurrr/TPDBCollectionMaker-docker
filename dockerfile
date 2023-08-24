@@ -46,13 +46,7 @@ RUN /bin/bash -c apt-get update; \
 RUN /bin/bash -c apt-get install -y --no-install-recommends nano; \
 
 # Clone TPDBCollectionMaker repository
-RUN /bin/bash -c git clone https://github.com/PierreDurrr/TPDbCollectionMaker.git /app/TPDBCollectionMaker
-
-# Copier le script set-pipen.sh et les autres fichiers nécessaires dans le conteneur
-COPY set-pipenv.py /app/set-pipenv.py
-
-# Set executable permissions for scripts
-#RUN chmod +x /app/set-pipenv.sh
+RUN git clone https://github.com/PierreDurrr/TPDbCollectionMaker.git /app/TPDBCollectionMaker
 
 # Installer le module watchdog
 RUN pip3 install watchdog
