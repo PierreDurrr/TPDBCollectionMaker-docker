@@ -11,7 +11,7 @@ RUN pip3 install --no-cache-dir --upgrade pipenv; \
 FROM python:3.11-slim as python-reqs
 
 # Install gcc for building python dependencies
-RUN -c apt install software-properties-common; \
+RUN apt install software-properties-common; \
 RUN -c add-apt-repository ppa:ubuntu-toolchain-r/test; \
 RUN -c apt-get update; \
 RUN -c apt-get install -y gcc; \
