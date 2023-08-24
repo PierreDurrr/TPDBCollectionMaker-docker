@@ -17,7 +17,7 @@ RUN add-apt-repository ppa:ubuntu-toolchain-r/test; \
 RUN apt-get update; \
 RUN apt-get install -y gcc; \
 RUN apt-get update && apt-get install -y \
-    git \
+    git
 
 # Set base image for running TPDBCollectionMaker
 FROM python:3.11-slim
