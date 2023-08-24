@@ -15,6 +15,7 @@ RUN apt-get update \
 RUN apt-get install software-properties-common \
 RUN add-apt-repository ppa:ubuntu-toolchain-r/test \
 RUN apt-get update \
+RUN apt-get install -y gcc \
 RUN apt-get install -y gcc
 #RUN apt update && apt install -y git && rm -rf /var/lib/apt/lists/*
 
@@ -46,9 +47,6 @@ RUN set -eux; \
 
 # Set working directory, copy source into container
 WORKDIR /app
-
-# Copier le script Python et les autres fichiers nécessaires dans le conteneur
-COPY script.py /app/script.py
 
 # Installer le module watchdog
 RUN pip3 install watchdog
