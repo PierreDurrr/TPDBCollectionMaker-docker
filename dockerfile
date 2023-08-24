@@ -47,7 +47,7 @@ RUN set -eux; \
 
 
 # Set working directory, copy source into container
-WORKDIR /
+WORKDIR /app
 
 # Installer le module watchdog
 RUN pip3 install watchdog
