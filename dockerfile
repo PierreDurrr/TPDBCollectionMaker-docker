@@ -5,6 +5,23 @@ RUN apk add --no-cache --upgrade --virtual=build-dependencies \
     cargo \
     gcc \
     git \
+    jpeg-dev \
+    libffi-dev \
+    libxslt-dev \
+    libxml2-dev \
+    musl-dev \
+    openssl-dev \
+    postgresql-dev \
+    python3-dev \
+    zlib-dev && \
+  apk add --no-cache --upgrade \
+    tiff \
+    postgresql-client \
+    py3-setuptools \
+    python3 \
+    uwsgi \
+    uwsgi-python \
+    sshpass \
     nano \
     curl \
     jq
