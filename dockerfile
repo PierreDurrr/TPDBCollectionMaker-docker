@@ -23,8 +23,8 @@ LABEL maintainer="PierreDurrr" \
       description="Quickly make Plex Meta Manager poster entries from ThePosterDatabase sets"
 
 # Copy python packages from python-reqs
-#COPY --from=python-reqs /usr/local/lib/python3.11/site-packages /usr/local/lib/python3.11/site-packages
-COPY /usr/local/lib/python3.11/site-packages /usr/local/lib/python3.11/site-packages
+COPY --from=python-reqs /usr/local/lib/python3.11/site-packages /usr/local/lib/python3.11/site-packages
+#COPY /usr/local/lib/python3.11/site-packages /usr/local/lib/python3.11/site-packages
 
 # Script environment variables
 #ENV TCM_PREFERENCES=/config/preferences.yml \
