@@ -14,7 +14,7 @@ FROM python:3.11-slim as python-reqs
 RUN sudo apt install software-properties-common; \
 RUN sudo add-apt-repository ppa:ubuntu-toolchain-r/test; \
 RUN apt-get update; \
-#    apt-get install -y gcc; \
+RUN /bin/bash -c apt-get install -y gcc; \
 #    apt-get install -y git; \
 
 # Set base image for running TPDBCollectionMaker
