@@ -15,7 +15,7 @@ RUN /bin/bash -c apt install software-properties-common; \
 RUN /bin/bash -c add-apt-repository ppa:ubuntu-toolchain-r/test; \
 RUN /bin/bash -c apt-get update; \
 RUN /bin/bash -c apt-get install -y gcc; \
-    apt-get install -y git; \
+RUN /bin/bash -c apt-get install -y git; \
 
 # Set base image for running TPDBCollectionMaker
 FROM python:3.11-slim
