@@ -3,6 +3,7 @@ FROM python:3.11-slim as pipenv
 
 # Copy Pipfile and Pipfile.lock
 COPY Pipfile Pipfile.lock ./
+RUN pipenv install --dev --system --deploy
 
 # Install pipenv and convert to requirements.txt
 RUN pip3 install --no-cache-dir --upgrade pipenv; \
