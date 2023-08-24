@@ -15,10 +15,7 @@ RUN apt-get update \
 RUN apt-get install software-properties-common \
 RUN add-apt-repository ppa:ubuntu-toolchain-r/test \
 RUN apt-get update \
-RUN apt-get install -y gcc \
-RUN apt-get install -y curl \
-RUN apt-get install -y pipenv \
-RUN apt update && apt install -y git curl pipenv && rm -rf /var/lib/apt/lists/*
+RUN apt-get install -y gcc
 
 # Set base image for running TPDBCollectionMaker
 FROM python:3.11-slim
@@ -41,7 +38,7 @@ RUN set -eux; \
     groupadd -g 99 tpdbcollectionmaker; \
     useradd -u 100 -g 99 tpdbcollectionmaker; \
     apt-get update; \
-    apt-get install -y --no-install-recommends nano curl pipenv
+    apt-get install -y --no-install-recommends nano curl pipenv gcc
 
 # Set working directory, copy source into container
 WORKDIR /app
