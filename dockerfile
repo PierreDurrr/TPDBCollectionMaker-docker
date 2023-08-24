@@ -15,7 +15,7 @@ RUN apt-get update \
 RUN apt-get install software-properties-common \
 RUN add-apt-repository ppa:ubuntu-toolchain-r/test \
 RUN apt-get update \
-RUN apt-get install -y gcc \
+RUN apt-get install -y gcc
 #RUN apt update && apt install -y git && rm -rf /var/lib/apt/lists/*
 
 # Set base image for running TPDBCollectionMaker
