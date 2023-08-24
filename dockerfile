@@ -52,6 +52,13 @@ COPY main.py /app/main.py
 # Installer le module watchdog
 RUN pip3 install watchdog
 
+# Copier le script set-pipen.sh et les autres fichiers nécessaires dans le conteneur
+COPY set-pipenv.py /app/set-pipenv.py
+
+# Start pipenv
+# RUN pipenv run python /app/TPDBCollectionMaker/main.py
+RUN python3 /app/set-pipenv.py
+
 # Définir le point d'entrée du conteneur
 ENTRYPOINT ["python3", "/app/watchdog-service.py"]
 
