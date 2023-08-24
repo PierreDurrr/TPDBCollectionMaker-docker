@@ -48,10 +48,10 @@ RUN set -eux; \
 WORKDIR /app
 
 # Create watchdog directory
-RUN mkdir /watchdog
+RUN mkdir watchdog
 
 # Copier le script Python et les autres fichiers nécessaires dans le conteneur
-COPY watchdog.py /watchdog/watchdog.py
+COPY watchdog.py /app/watchdog/watchdog.py
 
 # Installer le module watchdog
 RUN pip3 install watchdog
