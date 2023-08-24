@@ -47,8 +47,11 @@ RUN set -eux; \
 # Set working directory, copy source into container
 WORKDIR /app
 
-# Copier le script Python et les autres fichiers nécessaires dans le conteneur
+# Copier le script watchdog et les autres fichiers nécessaires dans le conteneur
 COPY watchdog-service.py /app/watchdog-service.py
+
+# Copier le script Python et les autres fichiers nécessaires dans le conteneur
+COPY main.py /app/main.py
 
 # Installer le module watchdog
 RUN pip3 install watchdog
