@@ -35,7 +35,7 @@ if __name__ == '__main__':
         # Créer l'objet watchdog pour surveiller les événements du dossier
         event_handler = NewFileHandler()
         observer = Observer()
-        observer.schedule(event_handler, folder_path, recursive=True)
+        observer.schedule(event_handler, folder_path, recursive=False)
         observer.start()
 
         # Garder le script en cours d'exécution pour continuer à surveiller
