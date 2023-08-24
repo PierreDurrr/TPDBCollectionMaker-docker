@@ -11,11 +11,11 @@ RUN pip3 install --no-cache-dir --upgrade pipenv; \
 FROM python:3.11-slim as python-reqs
 
 # Install gcc for building python dependencies
-RUN apt install software-properties-common; \
-RUN -c add-apt-repository ppa:ubuntu-toolchain-r/test; \
-RUN -c apt-get update; \
-RUN -c apt-get install -y gcc; \
-RUN -c apt-get install -y git; \
+RUN apt-get install software-properties-common; \
+RUN add-apt-repository ppa:ubuntu-toolchain-r/test; \
+RUN apt-get update; \
+RUN apt-get install -y gcc; \
+RUN apt-get install -y git; \
 
 # Set base image for running TPDBCollectionMaker
 FROM python:3.11-slim
