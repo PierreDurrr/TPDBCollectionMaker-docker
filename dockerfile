@@ -46,3 +46,8 @@ RUN pip3 install watchdog
 
 # Définir le point d'entrée du conteneur
 ENTRYPOINT ["python3", "/app/watchdog-service.py"]
+
+# NEED pipenv shell
+
+# Installer le module watchdog
+RUN pip3 install watchdog
