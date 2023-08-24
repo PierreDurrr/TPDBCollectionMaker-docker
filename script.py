@@ -11,7 +11,7 @@ folder_path = '/app/data'
 
 # La commande à exécuter pour chaque nouveau fichier
 #command_to_execute = "echo New file detected: {}"
-command_to_execute = "pipenv run python /app/TPDBCollectionMaker/main.py /app/data/in.html --always-quote > /app/data/mymetadatafile.yml"
+command_to_execute = "python /app/TPDBCollectionMaker/main.py /app/data/in.html --always-quote > /app/data/mymetadatafile.yml"
 
 class NewFileHandler(FileSystemEventHandler):
     def on_created(self, event):
