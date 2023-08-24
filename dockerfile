@@ -2,7 +2,7 @@
 FROM python:3.11-slim as pipenv
 
 # Copy Pipfile and Pipfile.lock
-COPY Pipfile Pipfile.lock .
+COPY Pipfile Pipfile.lock ./
 RUN PIPENV_VENV_IN_PROJECT=1 pipenv install --dev --system --deploy
 
 # Install pipenv and convert to requirements.txt
