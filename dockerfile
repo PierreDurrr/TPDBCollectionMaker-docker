@@ -53,7 +53,7 @@ WORKDIR /app
 RUN pip3 install watchdog
 
 # Définir le point d'entrée du conteneur
-ENTRYPOINT ["python3", "./script.py"]
+ENTRYPOINT ["python3", "/app/script.py"]
   
 # Entrypoint
 #CMD ["python3", "main.py", "--run", "--no-color"]
