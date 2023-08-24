@@ -41,10 +41,7 @@ RUN set -eux; \
     groupadd -g 99 tpdbcollectionmaker; \
     useradd -u 100 -g 99 tpdbcollectionmaker; \
     apt-get update; \
-    apt-get install -y --no-install-recommends nano
-
-# Clone TPDBCollectionMaker repository
-# git clone https://github.com/PierreDurrr/TPDbCollectionMaker.git /app/TPDBCollectionMaker
+    apt-get install -y --no-install-recommends nano curl pipenv
 
 # Set working directory, copy source into container
 WORKDIR /app
