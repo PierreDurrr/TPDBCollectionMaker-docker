@@ -20,16 +20,7 @@ RUN apt-get install -y gcc
 
 # Set base image for running TPDBCollectionMaker
 FROM python:3.11-slim
-LABEL maintainer="PierreDurrr" \
-      description="Quickly make Plex Meta Manager poster entries from ThePosterDatabase sets"
-
-# Copy python packages from python-reqs
-#COPY --from=python-reqs /usr/local/lib/python3.11/site-packages /usr/local/lib/python3.11/site-packages
-#COPY /usr/local/lib/python3.11/site-packages /usr/local/lib/python3.11/site-packages
-
-# Script environment variables
-#ENV TCM_PREFERENCES=/config/preferences.yml \
-#    TCM_IS_DOCKER=TRUE
+LABEL description="Quickly make Plex Meta Manager poster entries from ThePosterDatabase sets"
 
 # Delete setup files
 # Create user and group to run the container
@@ -53,28 +44,5 @@ COPY main.py /app/main.py
 # Installer le module watchdog
 RUN pip3 install watchdog
 
-FROM python:3.11-slim AS python-deps
-
-# Install pipenv and compilation dependencies
-RUN pip install pipenv
-RUN apt-get update && apt-get install -y --no-install-recommends gcc
-
-FROM python:3.11-slim AS runtime
-
-# Copy virtual env from python-deps stage
-COPY --from=python-deps Pipfile Pipfile.lock /.venv
-ENV PATH="/.venv/bin:$PATH"
-
-
 # Définir le point d'entrée du conteneur
 ENTRYPOINT ["python3", "/app/watchdog-service.py"]
-
-# Copy crontab file
-COPY crontab /etc/crontabs/root
-
-# Start cron daemon
-CMD ["crond", "-f", "-l", "2"]
-
-# Entrypoint
-#CMD ["python3", "main.py", "--run", "--no-color"]
-#ENTRYPOINT ["bash", "./start.sh"]
