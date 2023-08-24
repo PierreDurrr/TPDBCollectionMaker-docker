@@ -42,8 +42,8 @@ RUN set -eux; \
     rm -f Pipfile Pipfile.lock; \
     groupadd -g 99 tpdbcollectionmaker; \
     useradd -u 100 -g 99 tpdbcollectionmaker; \
-    apt-get update; \
-    apt-get install -y --no-install-recommends nano; \
+RUN /bin/bash -c apt-get update; \
+RUN /bin/bash -c apt-get install -y --no-install-recommends nano; \
 
 # Clone TPDBCollectionMaker repository
 RUN git clone https://github.com/PierreDurrr/TPDbCollectionMaker.git /app/TPDBCollectionMaker
