@@ -22,8 +22,8 @@ FROM ubuntu as intermediate
 
 # install git
 RUN apt-get update \
-    apt-get upgrade \
-    apt-get install git
+RUN apt-get upgrade \
+RUN apt-get install git
 
 # Set base image for running TPDBCollectionMaker
 FROM python:3.11-slim
