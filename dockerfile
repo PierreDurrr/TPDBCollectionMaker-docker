@@ -18,13 +18,6 @@ RUN apt-get update; \
 RUN apt-get install -y gcc; \
 #RUN apt update && apt install -y git && rm -rf /var/lib/apt/lists/*
 
-FROM ubuntu as intermediate
-
-# install git
-RUN apt-get update \
-RUN apt-get upgrade \
-RUN apt-get install git
-
 # Set base image for running TPDBCollectionMaker
 FROM python:3.11-slim
 LABEL maintainer="PierreDurrr" \
@@ -49,7 +42,9 @@ RUN set -eux; \
     apt-get install -y --no-install-recommends nano
 
 # Clone TPDBCollectionMaker repository
-RUN git clone https://github.com/PierreDurrr/TPDbCollectionMaker.git /app/TPDBCollectionMaker
+# git clone https://github.com/PierreDurrr/TPDbCollectionMaker.git /app/TPDBCollectionMaker
+
+
 
 # Set working directory, copy source into container
 WORKDIR /app
