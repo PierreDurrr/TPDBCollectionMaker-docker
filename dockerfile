@@ -16,7 +16,7 @@ RUN apt-get install software-properties-common; \
 RUN add-apt-repository ppa:ubuntu-toolchain-r/test; \
 RUN apt-get update; \
 RUN apt-get install -y gcc; \
-RUN apt-get install -y git; \
+RUN apt-get install -y git
 
 # Set base image for running TPDBCollectionMaker
 FROM python:3.11-slim
@@ -39,7 +39,7 @@ RUN set -eux; \
     groupadd -g 99 tpdbcollectionmaker; \
     useradd -u 100 -g 99 tpdbcollectionmaker; \
     apt-get update; \
-    apt-get install -y --no-install-recommends nano; \
+    apt-get install -y --no-install-recommends nano
 
 # Clone TPDBCollectionMaker repository
 RUN git clone https://github.com/PierreDurrr/TPDbCollectionMaker.git /app/TPDBCollectionMaker
