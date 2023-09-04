@@ -1,7 +1,7 @@
 # Set base image for running TCM
 FROM python:3.11-slim
 LABEL maintainer="PierreDurrr" \
-      description="Quickly make Plex-Meta-Manager poster entries from ThePosterDatabase sets"
+      description="Docker version - Quickly make Plex-Meta-Manager poster entries from ThePosterDatabase sets"
 
 # Créer le répertoire de travail
 WORKDIR /app
