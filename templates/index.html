@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>File Upload</title>
+    <title>TPDB Collection Maker</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body class="container">
-    <h1 class="mt-5">File Upload</h1>
+    <h1 class="mt-5">TPDB Collection Maker - Ready to use with Plex Meta Manager</h1>
 
     {% if success is defined %}
         {% if success %}
@@ -21,26 +21,27 @@
         {% endif %}
     {% endif %}
 
-    <!-- Add an input box for URL and custom output filename -->
-    <form action="/upload" method="post" enctype="multipart/form-data" class="mt-3">
-        <div class="custom-file">
-            <input type="file" class="custom-file-input" id="customFile" name="file">
-            <label class="custom-file-label" for="customFile">Choose HTML file</label>
-        </div>
+    <!-- Update the form to include the button and call the parseUrl function -->
+    <form onsubmit="parseUrl(); return false;" action="/upload" method="post" enctype="multipart/form-data" class="mt-3">
+<!--        <div class="custom-file"> -->
+<!--            <input type="file" class="custom-file-input" id="customFile" name="file"> -->
+<!--            <label class="custom-file-label" for="customFile">Choose HTML file</label> -->
+<!--        </div> -->
         <div class="form-group mt-3">
-            <label for="urlInput">Enter URL:</label>
+            <label for="urlInput">Enter URL of a TPDB set (i.e https://theposterdb.com/set/211052) :</label>
             <input type="text" class="form-control" id="urlInput" name="url" placeholder="Enter URL">
         </div>
-        <div class="form-group mt-3">
-            <label for="outputName">Custom Output Filename:</label>
-            <input type="text" class="form-control" id="outputName" name="output_name" placeholder="Enter custom filename (optional)">
-        </div>
-        <button type="submit" class="btn btn-primary mt-3">Upload</button>
+<!--        <div class="form-group mt-3"> -->
+<!--            <label for="outputName">Custom Output Filename:</label> -->
+<!--            <input type="text" class="form-control" id="outputName" name="output_name" placeholder="Enter custom filename (optional)"> -->
+<!--        </div> -->
+        <!-- Add the "Parse and Convert" button -->
+        <button type="button" class="btn btn-primary mt-3" onclick="parseUrl()">Convert (Press only once, allow 10 secondes to process)</button>
     </form>
- 
+
     <hr class="mt-5">
 
-    <h2>Monitored Folder Contents:</h2>
+    <h2>My already processed sets :</h2>
     <ul>
         {% for file in folder_contents %}
             <li>{{ file }}</li>
@@ -50,5 +51,22 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <!-- Add this script to handle the URL input and trigger the AJAX request -->
+    <script>
+        function parseUrl() {
+            var urlInput = document.getElementById('urlInput').value;
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '/parse', true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    // Optionally, you can handle the response from the server here
+                    console.log(xhr.responseText);
+                }
+            };
+            xhr.send('url=' + encodeURIComponent(urlInput));
+        }
+    </script>
 </body>
 </html>
