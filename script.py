@@ -3,13 +3,13 @@
 import os
 import sys
 import time
-from watchdog.observers import Observer
-from watchdog.events import FileSystemEventHandler
 import subprocess
 import jinja2
+from watchdog.observers import Observer
+from watchdog.events import FileSystemEventHandler
 
 # Path of the folder to monitor
-#folder_path = os.environ.get('FOLDER_PATH', '/app/data')
+folder_path = os.environ.get('FOLDER_PATH', '/app/data')
 
 # Command to execute for each new HTML file
 command_to_execute = ["python3", "/app/TPDBCollectionMaker/main.py", "{input_file}", "--always-quote"]
